@@ -73,7 +73,7 @@ export class ProductsComponent implements OnInit {
 
 
   onScroll(e: any) {
-    if (this.jsondata.length==this.some.length) {
+    if (this.jsondata.length == this.some.length) {
       this.show = false
       console.log('No more items');
       return;

@@ -2,85 +2,97 @@
     <h1 style="color: green;">Thank you for submitting your response </h1>
 </div>
 
-<div class="container" *ngIf="!show"> 
+<div class="container" *ngIf="!show">
     <div class=" text-center mt-5 ">
-    <h1>Feed Back</h1>
-</div>
-<div class="row " >
-    <div class="col-lg-7 mx-auto">
-        <div class="card mt-2 mx-auto p-4 bg-light">
-            <div class="card-body bg-light">
-                <div class="container">
-                    <form  [formGroup]="feedbackform">
-                        <div class="controls">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                         <label for="form_name">Firstname *</label>
-                                          <input id="form_name" type="text" formControlName="first" name="name"
-                                           class="form-control" placeholder="Please enter your firstname *"  (keypress)="allser.AlphabetsOnly($event)"
-                                           > 
-                                          <div class="invalid_feedback" style="color: red;" *ngIf="submitted && feedbackform.get('first').hasError('required')">
-                                            first name is required
-                                           </div>
+        <h1>Feed Back</h1>
+    </div>
+    <div class="row ">
+        <div class="col-lg-7 mx-auto">
+            <div class="card mt-2 mx-auto p-4 bg-light">
+                <div class="card-body bg-light">
+                    <div class="container">
+                        <form [formGroup]="feedbackform">
+                            <div class="controls">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="form_name">Firstname *</label>
+                                            <input id="form_name" type="text" formControlName="first" name="name"
+                                                class="form-control" placeholder="Please enter your firstname *"
+                                                (keypress)="allser.AlphabetsOnly($event)">
+                                            <div class="invalid_feedback" style="color: red;"
+                                                *ngIf="submitted && feedbackform.get('first').hasError('required')">
+                                                first name is required
+                                            </div>
                                         </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="form_lastname">Lastname *</label>
+                                            <input id="form_lastname" type="text" formControlName="last" name="surname"
+                                                class="form-control" placeholder="Please enter your lastname *"
+                                                (keypress)="allser.AlphabetsOnly($event)">
+                                            <div class="invalid_feedback" style="color: red;"
+                                                *ngIf="submitted && feedbackform.get('last').hasError('required')">
+                                                Last name is required
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group"> 
-                                        <label for="form_lastname">Lastname *</label>
-                                         <input id="form_lastname" type="text" formControlName="last" name="surname"
-                                          class="form-control" placeholder="Please enter your lastname *" (keypress)="allser.AlphabetsOnly($event)"> 
-                                         <div class="invalid_feedback" style="color: red;" *ngIf="submitted && feedbackform.get('last').hasError('required')">
-                                           Last name is required
-                                           </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="form_email">Email *</label>
+                                            <input id="form_email" type="email" formControlName="email" name="email"
+                                                class="form-control" placeholder="Please enter your email *">
+                                            <div class="invalid_feedback" style="color: red;"
+                                                *ngIf="submitted && feedbackform.get('email').hasError('required')">
+                                                Email is required
+                                            </div>
+                                            <div class="invalid_feedback" style="color: red;"
+                                                *ngIf="submitted && feedbackform.get('email').hasError('pattern')">
+                                                please enter valid Email address
+                                            </div>
                                         </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_email">Phone Number *</label>
+                                            <input type="text" formControlName="phonenumber" name="pgnumber"
+                                                class="form-control" placeholder="Please enter your phone number *"
+                                                maxlength="10" (keypress)="allser.numberOnly($event)">
+                                            <div class="invalid_feedback" style="color: red;"
+                                                *ngIf="submitted && feedbackform.get('phonenumber').hasError('required')">
+                                                Phone number is required
+                                            </div>
+                                            <div class="invalid_feedback" style="color: red;"
+                                                *ngIf="submitted && feedbackform.get('phonenumber').hasError('pattern')">
+                                                Phone number is invalid
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="form_message">Message *</label>
+                                            <textarea id="form_message" formControlName="message" name="message"
+                                                class="form-control" placeholder="Write your message here."
+                                                rows="4"></textarea>
+                                            <div class="invalid_feedback" style="color: red;"
+                                                *ngIf="submitted && feedbackform.get('message').hasError('required')">
+                                                Feedback is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12"> <input type="submit"
+                                            class="btn btn-success btn-send pt-2 btn-block " value="Send Message"
+                                            (click)="sendmsg()"> </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group"> 
-                                        <label for="form_email">Email *</label>
-                                         <input id="form_email" type="email" formControlName="email" name="email" class="form-control"
-                                          placeholder="Please enter your email *" > 
-                                         <div class="invalid_feedback" style="color: red;" *ngIf="submitted && feedbackform.get('email').hasError('required')">
-                                            Email is required
-                                           </div>
-                                           <div class="invalid_feedback" style="color: red;" *ngIf="submitted && feedbackform.get('email').hasError('pattern')">
-                                           please enter valid Email address
-                                           </div>
-                                        </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group"> <label for="form_email">Phone Number *</label>
-                                         <input  type="text" formControlName="phonenumber" name="pgnumber" 
-                                         class="form-control" placeholder="Please enter your phone number *" maxlength="10"  (keypress)="allser.numberOnly($event)"> 
-                                         <div class="invalid_feedback" style="color: red;" *ngIf="submitted && feedbackform.get('phonenumber').hasError('required')">
-                                            Phone number is required
-                                           </div>
-                                           <div class="invalid_feedback" style="color: red;" *ngIf="submitted && feedbackform.get('phonenumber').hasError('pattern')">
-                                            Phone number is invalid
-                                           </div>
-                                        </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                         <label for="form_message">Message *</label> 
-                                        <textarea id="form_message" formControlName="message" name="message" class="form-control"
-                                         placeholder="Write your message here." rows="4"></textarea>
-                                        <div class="invalid_feedback" style="color: red;" *ngIf="submitted && feedbackform.get('message').hasError('required')">
-                                            Feedback  is required
-                                           </div>
-                                     </div>
-                                </div>
-                                <div class="col-md-12"> <input type="submit" class="btn btn-success btn-send pt-2 btn-block " value="Send Message" (click)="sendmsg()"> </div>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
-            </div>
-        </div> <!-- /.8 -->
-    </div> <!-- /.row-->
-</div>
+            </div> <!-- /.8 -->
+        </div> <!-- /.row-->
+    </div>
 </div>

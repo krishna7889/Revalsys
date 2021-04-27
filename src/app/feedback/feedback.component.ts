@@ -13,27 +13,27 @@ export class FeedbackComponent implements OnInit {
   show!: boolean;
 
   constructor(
-    private fb:FormBuilder,
+    private fb: FormBuilder,
     public allser: AllapiService
   ) { }
 
   ngOnInit(): void {
-    this.feedbackform=this.fb.group({
-      first:['',[Validators.required]],
-      last:['',[Validators.required]],
-      email:['', Validators.compose([Validators.required,
-        Validators.pattern(/^([a-z]{2}[0-9a-zA-Z]{2}([-.\w]*[0-9a-zA-Z])*@([a-zA-Z][-\w]*[a-zA-Z]\.)+[a-zA-Z]{2,9})$/)])],
-      phonenumber:['',[Validators.required,Validators.minLength(10), Validators.pattern(/^[6-9]{1}[0-9]{9}$/)]],
-      message:['',[Validators.required]],
-})
+    this.feedbackform = this.fb.group({
+      first: ['', [Validators.required]],
+      last: ['', [Validators.required]],
+      email: ['', Validators.compose([Validators.required,
+      Validators.pattern(/^([a-z]{2}[0-9a-zA-Z]{2}([-.\w]*[0-9a-zA-Z])*@([a-zA-Z][-\w]*[a-zA-Z]\.)+[a-zA-Z]{2,9})$/)])],
+      phonenumber: ['', [Validators.required, Validators.minLength(10), Validators.pattern(/^[6-9]{1}[0-9]{9}$/)]],
+      message: ['', [Validators.required]],
+    })
   }
-  sendmsg(){
-    this.submitted=true
-    if(this.feedbackform.invalid){
+  sendmsg() {
+    this.submitted = true
+    if (this.feedbackform.invalid) {
       return
     }
-    this.show=true
-    localStorage.setItem('feedback',JSON.stringify(this.feedbackform.value))
+    this.show = true
+    localStorage.setItem('feedback', JSON.stringify(this.feedbackform.value))
 
   }
 

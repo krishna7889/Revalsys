@@ -11,40 +11,40 @@ import { AllapiService } from '../allapi.service';
 export class LoginComponent implements OnInit {
   loginform: any;
   submitted!: boolean;
-  empList: Array<{Email:string}> = [];
+  empList: Array<{ Email: string }> = [];
   message: any;
-  url='list%3FsortType'
-  value='hightolow'
+  url = 'list%3FsortType'
+  value = 'hightolow'
   constructor(
-    private fb:FormBuilder,
-    private route:Router,
-    public http:AllapiService
-    ) { }
+    private fb: FormBuilder,
+    private route: Router,
+    public http: AllapiService
+  ) { }
 
   ngOnInit(): void {
-    this.loginform=this.fb.group({
-      username:['',[Validators.required]],
-      password:['',[Validators.required]]
-})
+    this.loginform = this.fb.group({
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]]
+    })
   }
-  login(){
-    this.submitted=true;
-    if(this.loginform.invalid){
-        return 
+  login() {
+    this.submitted = true;
+    if (this.loginform.invalid) {
+      return
     }
-    else{
-      let Email=this.loginform.get('username').value
-      let Pwd=this.loginform.get('password').value
-      if(Email=='test' && Pwd=='test'){
-        localStorage.setItem('user',JSON.stringify(this.loginform.value))
-        this.route.navigate(['products','list%3FsortType=',this.value])
+    else {
+      let Email = this.loginform.get('username').value
+      let Pwd = this.loginform.get('password').value
+      if (Email == 'test' && Pwd == 'test') {
+        localStorage.setItem('user', JSON.stringify(this.loginform.value))
+        this.route.navigate(['products', 'list%3FsortType=', this.value])
         this.http.toster('Login Successfully', 'Success')
-        
+
       }
-        else{
-          this.message='invalid details'
-          this.http.showError('invalid message','error');
-        }
+      else {
+        this.message = 'invalid details'
+        this.http.showError('invalid message', 'error');
+      }
     }
-    }
+  }
 }
