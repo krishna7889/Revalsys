@@ -73,20 +73,17 @@ export class ProductsComponent implements OnInit {
   }
 
   onScroll(e: any) {
-    if (this.jsondata.length >= 36) {
+    if (this.jsondata.length==this.some.length) {
       this.show = false
       console.log('No more items');
       return;
     }
     this.show = true
     setTimeout(() => {
-      console.log('scrolled!!', e);
       this.newend = this.end + 12
-      console.log(this.newend)
       const moredata = this.some.slice(this.end, this.end + 12)
       this.jsondata = [...this.jsondata, ...moredata];
-      console.log(this.jsondata)
       this.end = this.newend
-    }, 1500);
+    }, 1300);
   }
 }
