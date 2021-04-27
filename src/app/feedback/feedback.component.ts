@@ -23,7 +23,7 @@ export class FeedbackComponent implements OnInit {
       last:['',[Validators.required]],
       email:['', Validators.compose([Validators.required,
         Validators.pattern(/^([a-z]{2}[0-9a-zA-Z]{2}([-.\w]*[0-9a-zA-Z])*@([a-zA-Z][-\w]*[a-zA-Z]\.)+[a-zA-Z]{2,9})$/)])],
-      phonenumber:['',[Validators.required,Validators.minLength(10), Validators.pattern(/^[6-9]{1}[1-9]{8}$/)]],
+      phonenumber:['',[Validators.required,Validators.minLength(10), Validators.pattern(/^[6-9]{1}[0-9]{9}$/)]],
       message:['',[Validators.required]],
 })
   }

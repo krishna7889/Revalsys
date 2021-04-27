@@ -5,16 +5,24 @@
    <img src="assets/2.png"> 
    <!-- Login Form -->
       <form [formGroup]="loginform">
-       <input type="text" id="login" class="fadeIn second" name="login" placeholder="login" formControlName="username">
-       <div class="invalid_feedback" style="color: red;"
-       *ngIf="submitted && loginform.get('username').hasError('required')">required
-       </div>
-       <input type="text" id="password" class="fadeIn third" name="login" placeholder="password" formControlName="password">
-       <div class="invalid_feedback" style="color: red;"
-       *ngIf="submitted && loginform.get('password').hasError('required')">required
-       </div>
-      <button class="btn btn-primary" (click)="login()"> login</button>
+        <div>
+          <input type="email"  class="fadeIn second mt-3" name="login" placeholder="login" formControlName="username" autocomplete="true">
+          <div class="invalid_feedback" style="color: red;"
+          *ngIf="submitted && loginform.get('username').hasError('required')">required
+          </div>
+        </div>
+      
+        <div>
+          <input type="password"  class="fadeIn third mt-3"  placeholder="password" formControlName="password"  autocomplete="true">
+          <div class="invalid_feedback" style="color: red;"
+          *ngIf="submitted && loginform.get('password').hasError('required')">required
+          </div>
+        </div>
+
+      
      </form>
+     <button class="btn btn-primary mt-3" (click)="login()"> login</button>
+
    <p>{{message}}</p>
      <!-- Remind Passowrd -->
      <div id="formFooter">

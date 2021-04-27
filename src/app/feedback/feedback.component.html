@@ -18,7 +18,7 @@
                                     <div class="form-group">
                                          <label for="form_name">Firstname *</label>
                                           <input id="form_name" type="text" formControlName="first" name="name"
-                                           class="form-control" placeholder="Please enter your firstname *"  (keypress)="allser.AlphabetsOnly($event);allser.nospace($event)"
+                                           class="form-control" placeholder="Please enter your firstname *"  (keypress)="allser.AlphabetsOnly($event)"
                                            > 
                                           <div class="invalid_feedback" style="color: red;" *ngIf="submitted && feedbackform.get('first').hasError('required')">
                                             first name is required
@@ -29,7 +29,7 @@
                                     <div class="form-group"> 
                                         <label for="form_lastname">Lastname *</label>
                                          <input id="form_lastname" type="text" formControlName="last" name="surname"
-                                          class="form-control" placeholder="Please enter your lastname *" (keypress)="allser.AlphabetsOnly($event);allser.nospace($event)"> 
+                                          class="form-control" placeholder="Please enter your lastname *" (keypress)="allser.AlphabetsOnly($event)"> 
                                          <div class="invalid_feedback" style="color: red;" *ngIf="submitted && feedbackform.get('last').hasError('required')">
                                            Last name is required
                                            </div>
