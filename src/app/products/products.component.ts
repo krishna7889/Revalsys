@@ -84,6 +84,6 @@ export class ProductsComponent implements OnInit {
       const moredata = this.some.slice(this.end, this.end + 12)
       this.jsondata = [...this.jsondata, ...moredata];
       this.end = this.newend
-    }, 1300);
+    }, 1000);
   }
 }
