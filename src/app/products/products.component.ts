@@ -72,6 +72,7 @@ export class ProductsComponent implements OnInit {
     this.routes.navigate(['feedback'])
   }
 
+
   onScroll(e: any) {
     if (this.jsondata.length==this.some.length) {
       this.show = false
