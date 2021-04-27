@@ -37,7 +37,6 @@ export class ProductsComponent implements OnInit {
     this.allser.getdata().subscribe(r => {
       this.some = r;
       this.jsondata = this.some.slice(this.index, this.end)
-      console.log(this.some)
     })
   }
 
